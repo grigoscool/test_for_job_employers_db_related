@@ -5,6 +5,10 @@
 		<title>Employ</title>
 	</head>
 	<body>
-
+		<div class="container">
+			{% for dir in directors %}
+				<p>{{ dir.fio }}</p>
+			{% endfor %}
+		</div>
 	</body>
 </html>
