@@ -8,29 +8,34 @@ class AbstractEmploy(models.Model):
 
     def __str__(self):
         return self.fio
+
     class Meta:
         abstract = True
 
 
-class Directors(AbstractEmploy):
+class Director(AbstractEmploy):
+    class Meta:
+        verbose_name_plural = 'DIRs'
 
-class AssociateDirs(AbstractEmploy):
-    leader = models.ForeignKey(Directors, on_delete=models.PROTECT)
 
+class AssociateDir(AbstractEmploy):
+    leader = models.ForeignKey(Director, on_delete=models.PROTECT)
+    class Meta:
+        verbose_name_plural = 'AssociateDirs'
 
-class Managers(AbstractEmploy):
-    leader = models.ForeignKey(AbstractEmploy, on_delete=models.PROTECT)
+class Manager(AbstractEmploy):
+    leader = models.ForeignKey(AssociateDir, on_delete=models.PROTECT)
 
 
 class OperatorsKTZ(AbstractEmploy):
-    leader = models.ForeignKey(Managers, on_delete=models.PROTECT)
+    leader = models.ForeignKey(Manager, on_delete=models.PROTECT)
 
 
 class OperatorsElec(AbstractEmploy):
-    leader = models.ForeignKey(Managers, on_delete=models.PROTECT)
+    leader = models.ForeignKey(Manager, on_delete=models.PROTECT)
 
 
-class Crawlers(AbstractEmploy):
+class Crawler(AbstractEmploy):
     leader = models.ForeignKey(OperatorsKTZ, on_delete=models.PROTECT)
 
 
