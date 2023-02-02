@@ -5,9 +5,21 @@ from .models import Director, AssociateDir, Manager, OperatorsKTZ, OperatorsElec
 def home(request):
     directors = Director.objects.filter(pk__range=(1, 4))
     asis = AssociateDir.objects.filter(pk__range=(1, 4))
+    manager = Manager.objects.filter(pk__range=(1, 4))
+    operktz = OperatorsKTZ.objects.filter(pk__range=(1, 4))
+    operelec = OperatorsElec.objects.filter(pk__range=(1, 4))
+    crawler = Crawler.objects.filter(pk__range=(1, 4))
+    elec = Electric.objects.filter(pk__range=(1, 4))
+
+
 
     context = {
         'directors': directors,
         'asis': asis,
+        'manager': manager,
+        'operktz': operktz,
+        'operelec': operelec,
+        'crawler': crawler,
+        'elec': elec,
     }
     return render(request, 'work_site/index.html', context)
