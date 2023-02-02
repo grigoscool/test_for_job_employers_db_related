@@ -4,55 +4,71 @@
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="{% static 'work_site/css/style.css' %}" type="text/css">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 		<title>Employ</title>
 	</head>
 	<body>
-			<div class="container-lead">
-				<h1>Director</h1>
+		<div class="card dir" style="width: 18rem;">
+		  <div class="card-header text-bg-dark p-3">
+		    Director
+		  </div>
+		  <ul class="list-group list-group-flush">
 				{% for dir in directors %}
-					<p>{{ dir.fio }} - <span class="profession">{{ dir.job }}</span></p>
+		      <li class="list-group-item text-bg-warning p-3">{{ dir.fio }} - <span class="profession">{{ dir.job }}</span></li>
+			  {% endfor %}
+		  </ul>
+		</div>
+		<div class="card asis" style="width: 18rem;">
+		  <div class="card-header text-bg-dark p-3">
+		    AssociateDir
+		  </div>
+		  <ul class="list-group list-group-flush">
+			  {% for asi in asis %}
+		    <li class="list-group-item text-bg-warning p-3">{{ asi.fio }} - <span class="profession">{{ asi.job }}</span></li>
 				{% endfor %}
-			</div>
-			<p>&#9658;</p>
-			<div class="container-lead">
-				<h1>AssociateDir</h1>
-				{% for asi in asis %}
-					<p>{{ asi.fio }} - <span class="profession">{{ asi.job }}</span></p>
-				{% endfor %}
-			</div>
-			<p>&#9658;</p>
-			<div class="container-lead">
-				<h1>Manager</h1>
+		  </ul>
+		</div>
+		<div class="card manager" style="width: 18rem;">
+		  <div class="card-header text-bg-dark p-3">
+		    Manager
+		  </div>
+		  <ul class="list-group list-group-flush">
 				{% for m in manager %}
-					<p>{{ m.fio }} - <span class="profession">{{ m.job }}</span></p>
+		    <li class="list-group-item text-bg-warning p-3">{{ m.fio }} - <span class="profession">{{ m.job }}</li>
 				{% endfor %}
-			</div>
+		  </ul>
+		</div>
+
 			<div class="arrow1">
-				<p>	&#9660;</p>
 			</div>
+		<div class="container-oper">
 			<div class="container-ktz">
 				<h1>OperatorsKTZ</h1>
 				{% for k in operktz %}
 				<p>{{ k.fio }} - <span class="profession">{{ k.job }}</span></p>
 				{% endfor %}
 			</div>
-			<div class="container-operelec">
+			<div class="container-elec">
 				<h1>OperatorsElec</h1>
 				{% for e in operelec %}
-				<p>{{ e.fio }} - <span class="profession">{{ e.job }}</span></p>
+					<p>{{ e.fio }} - <span class="profession">{{ e.job }}</span></p>
 				{% endfor %}
 			</div>
+		</div>
+		<div class="container-worker">
 			<div class="container-crawler">
 				<h1>Crawler</h1>
 				{% for c in crawler %}
-				<p>{{ c.fio }} - <span class="profession">{{ c.job }}</span></p>
+					<p>{{ c.fio }} - <span class="profession">{{ c.job }}</span></p>
 				{% endfor %}
 			</div>
 			<div class="container-elec">
 				<h1>Electric</h1>
 				{% for ele in elec %}
-				<p>{{ ele.fio }} - <span class="profession">{{ ele.job }}</span></p>
+					<p>{{ ele.fio }} - <span class="profession">{{ ele.job }}</span></p>
 				{% endfor %}
 			</div>
+		</div>
+	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 	</body>
 </html>

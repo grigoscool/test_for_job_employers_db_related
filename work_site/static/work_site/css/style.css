@@ -1,47 +1,49 @@
-.container-lead {
-    border: 4px solid black;
-    float: left;
-    box-sizing: border-box;
-    margin-left: 15px;
-    padding: 5px;
+.dir {
+    margin: 0 auto;
+    margin-bottom: 15px;
+
 }
 
-.container-ktz {
+.asis {
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+
+.manager {
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+
+.container-oper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.container-ktz, .container-elec {
     border: 4px solid black;
-    margin: 15px;
-    padding: 5px;
-    clear: left;
-    float:left;
     width: 250px;
-}
-.container-operelec {
-    border: 4px solid black;
+    padding: 5px;
+    margin-bottom: 15px;
+    display: flex;
+    display: inline-block;
+    vertical-align: top;
     margin-left: 15px;
-    padding: 5px;
-    float: left;
-    box-sizing: border-box;
-    margin: 15px;
 }
-.container-elec {
-    border: 4px solid black;
-    margin-left: 15px;
-    padding: 5px;
-    float: left;
-    box-sizing: border-box;
-    margin: 15px;
+.container-worker {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 }
-.container-crawler {
+.container-crawler, .container-elec {
     border: 4px solid black;
-    margin: 15px;
-    padding: 5px;
-    clear: left;
-    float:left;
     width: 250px;
-}
-.arrow1 {
-    clear: left;
-    text-align: center;
-}
-.profession {
-    font-weight: bold;
+    padding: 5px;
+    margin-bottom: 15px;
+    display: flex;
+    display: inline-block;
+    vertical-align: top;
 }
