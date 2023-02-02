@@ -1,14 +1,23 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
+		<link rel="stylesheet" href="{% static 'work_site/css/style.css' %}" type="text/css">
 		<title>Employ</title>
 	</head>
 	<body>
 		<div class="container">
-			{% for dir in directors %}
-				<p>{{ dir.fio }}</p>
-			{% endfor %}
+			<div class="container-dir">
+				{% for dir in directors %}
+				<p>{{ dir.fio }} - {{ dir.job }}</p>
+				{% endfor %}
+			</div>
+			<div class="container-asis">
+				{% for asi in asis %}
+				<p>{{ asi.fio }} - {{ asi.job }}</p>
+				{% endfor %}
+			</div>
 		</div>
 	</body>
 </html>
