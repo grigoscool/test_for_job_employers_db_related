@@ -8,38 +8,48 @@
 	</head>
 	<body>
 			<div class="container-lead">
+				<h1>Director</h1>
 				{% for dir in directors %}
 					<p>{{ dir.fio }} - <span class="profession">{{ dir.job }}</span></p>
 				{% endfor %}
 			</div>
 			<p>&#9658;</p>
 			<div class="container-lead">
+				<h1>AssociateDir</h1>
 				{% for asi in asis %}
 					<p>{{ asi.fio }} - <span class="profession">{{ asi.job }}</span></p>
 				{% endfor %}
 			</div>
 			<p>&#9658;</p>
 			<div class="container-lead">
+				<h1>Manager</h1>
 				{% for m in manager %}
 					<p>{{ m.fio }} - <span class="profession">{{ m.job }}</span></p>
 				{% endfor %}
 			</div>
+			<div class="arrow1">
+				<p>	&#9660;</p>
+			</div>
 			<div class="container-ktz">
+				<h1>OperatorsKTZ</h1>
 				{% for k in operktz %}
 				<p>{{ k.fio }} - <span class="profession">{{ k.job }}</span></p>
 				{% endfor %}
 			</div>
 			<div class="container-operelec">
+				<h1>OperatorsElec</h1>
 				{% for e in operelec %}
 				<p>{{ e.fio }} - <span class="profession">{{ e.job }}</span></p>
 				{% endfor %}
 			</div>
 			<div class="container-crawler">
+				<h1>Crawler</h1>
 				{% for c in crawler %}
 				<p>{{ c.fio }} - <span class="profession">{{ c.job }}</span></p>
 				{% endfor %}
 			</div>
 			<div class="container-elec">
+				<h1>Electric</h1>
 				{% for ele in elec %}
 				<p>{{ ele.fio }} - <span class="profession">{{ ele.job }}</span></p>
 				{% endfor %}

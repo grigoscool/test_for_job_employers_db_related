@@ -38,7 +38,10 @@
     float:left;
     width: 250px;
 }
-
+.arrow1 {
+    clear: left;
+    text-align: center;
+}
 .profession {
     font-weight: bold;
 }

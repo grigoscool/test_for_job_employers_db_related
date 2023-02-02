@@ -3,7 +3,7 @@ from django.db import models
 class AbstractEmploy(models.Model):
     fio = models.CharField(max_length=255)
     job = models.CharField(max_length=255)
-    employment_date = models.DateTimeField(auto_created=True, blank=True)
+    employment_date = models.DateTimeField(auto_now_add=True, blank=True)
     salary = models.IntegerField()
 
     def __str__(self):
