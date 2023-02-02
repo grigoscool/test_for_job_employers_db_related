@@ -1,0 +1,44 @@
+.container-lead {
+    border: 4px solid black;
+    float: left;
+    box-sizing: border-box;
+    margin-left: 15px;
+    padding: 5px;
+}
+
+.container-ktz {
+    border: 4px solid black;
+    margin: 15px;
+    padding: 5px;
+    clear: left;
+    float:left;
+    width: 250px;
+}
+.container-operelec {
+    border: 4px solid black;
+    margin-left: 15px;
+    padding: 5px;
+    float: left;
+    box-sizing: border-box;
+    margin: 15px;
+}
+.container-elec {
+    border: 4px solid black;
+    margin-left: 15px;
+    padding: 5px;
+    float: left;
+    box-sizing: border-box;
+    margin: 15px;
+}
+.container-crawler {
+    border: 4px solid black;
+    margin: 15px;
+    padding: 5px;
+    clear: left;
+    float:left;
+    width: 250px;
+}
+
+.profession {
+    font-weight: bold;
+}
