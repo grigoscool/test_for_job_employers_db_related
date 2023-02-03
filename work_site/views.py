@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from .models import Director, AssociateDir, Manager, OperatorsKTZ, OperatorsElec, Crawler, Electric
 from django.db.models import Q
@@ -23,7 +24,7 @@ def home(request):
     }
     return render(request, 'work_site/index.html', context)
 
-
+@login_required
 def show_employ(request):
     directors = Director.objects.all().order_by('-salary')
     context = {
@@ -31,7 +32,7 @@ def show_employ(request):
     }
     return render(request, 'work_site/employers.html', context)
 
-
+@login_required
 def search(request):
     searching_data = request.GET.get('search')
     employer = Director.objects.filter(
