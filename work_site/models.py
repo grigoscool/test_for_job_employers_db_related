@@ -19,7 +19,7 @@ class Director(AbstractEmploy):
 
 
 class AssociateDir(AbstractEmploy):
-    leader = models.ForeignKey(Director, on_delete=models.PROTECT)
+    leader = models.ForeignKey(Director, on_delete=models.SET_NULL, null=True)
     class Meta:
         verbose_name_plural = 'AssociateDirs'
 
