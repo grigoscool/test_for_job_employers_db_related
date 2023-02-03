@@ -1,7 +1,11 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from .models import Director, AssociateDir, Manager, OperatorsKTZ, OperatorsElec, Crawler, Electric
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, UpdateView
 from django.db.models import Q
+
+from .models import Director, AssociateDir, Manager, OperatorsKTZ, OperatorsElec, Crawler, Electric
+from .forms import EmployForm
 
 
 def home(request):
@@ -24,6 +28,7 @@ def home(request):
     }
     return render(request, 'work_site/index.html', context)
 
+
 @login_required
 def show_employ(request):
     directors = Director.objects.all().order_by('-salary')
@@ -31,6 +36,7 @@ def show_employ(request):
         'directors': directors,
     }
     return render(request, 'work_site/employers.html', context)
+
 
 @login_required
 def search(request):
@@ -41,3 +47,17 @@ def search(request):
         'employer': employer,
     }
     return render(request, 'work_site/search_results.html', context)
+
+
+class AddEmployer(CreateView):
+    form_class = EmployForm
+    template_name = 'work_site/add_employ.html'
+    context_object_name = 'form'
+    success_url = reverse_lazy('site:employ_list')
+
+
+class EditEmploy(UpdateView):
+    model = Director
+    fields = '__all__'
+    template_name = 'work_site/edit_employ.html'
+    success_url = reverse_lazy('site:employ_list')

@@ -1,0 +1,10 @@
+{% extends 'work_site/base.html' %}
+{% load static %}
+{% block content %}
+<form action="{% url 'site:add_employ' %}" method="post">
+  {% csrf_token %}
+	{{ form.as_p }}
+	<input type="submit" value="create new employer">
+</form>
+
+{% endblock content %}

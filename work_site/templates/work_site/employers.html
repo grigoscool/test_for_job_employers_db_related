@@ -1,6 +1,7 @@
 {% extends 'work_site/base.html' %}
 {% load static %}
 {% block content %}
+<a href="{% url 'site:add_employ' %}">add employer</a>
 <table class="employ-list" border="1">
 	<caption>Table of employers list</caption>
 	<tr>
@@ -11,9 +12,12 @@
 	</tr>
 	{% for director in directors %}
 		<tr>
-			<td>{{ director.fio }}</td><td>{{ director.job }}</td>
-			<td>{{ director.employment_date }}</td><td>{{ director.salary }}</td>
+			<td>{{ director.fio }} - <a href="{% url 'site:edit_employ' director.pk %}">edit employ</a><hr></td>
+			<td>{{ director.job }}<hr></td>
+			<td>{{ director.employment_date }}<hr></td><td>{{ director.salary }}<hr></td>
+
 		</tr>
+
 	{% endfor %}
 
 </table>
