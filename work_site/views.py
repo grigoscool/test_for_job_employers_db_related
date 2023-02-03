@@ -3,7 +3,7 @@ from .models import Director, AssociateDir, Manager, OperatorsKTZ, OperatorsElec
 
 
 def home(request):
-    directors = Director.objects.filter(pk__range=(1, 4))
+    directors = Director.objects.filter(pk__range=(1, 2))
     asis = AssociateDir.objects.filter(pk__range=(1, 4))
     manager = Manager.objects.filter(pk__range=(1, 4))
     operktz = OperatorsKTZ.objects.filter(pk__range=(1, 4))
@@ -23,3 +23,6 @@ def home(request):
         'elec': elec,
     }
     return render(request, 'work_site/index.html', context)
+
+def show_employ(request):
+    return render(request, 'work_site/employers.html')
