@@ -12,7 +12,9 @@
 	</tr>
 	{% for director in directors %}
 		<tr>
-			<td>{{ director.fio }} - <a href="{% url 'site:edit_employ' director.pk %}">edit employ</a><hr></td>
+			<td>{{ director.fio }} - <a href="{% url 'site:edit_employ' director.pk %}">edit employ</a> -
+				<a href="{% url 'site:delete_employ' director.pk %}">delete employer</a><hr></td>
+
 			<td>{{ director.job }}<hr></td>
 			<td>{{ director.employment_date }}<hr></td><td>{{ director.salary }}<hr></td>
 

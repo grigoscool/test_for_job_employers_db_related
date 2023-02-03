@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, DeleteView
 from django.db.models import Q
 
 from .models import Director, AssociateDir, Manager, OperatorsKTZ, OperatorsElec, Crawler, Electric
@@ -61,3 +61,9 @@ class EditEmploy(UpdateView):
     fields = '__all__'
     template_name = 'work_site/edit_employ.html'
     success_url = reverse_lazy('site:employ_list')
+
+
+def delete_employ(request, pk):
+    employer = Director.objects.get(pk=pk)
+    employer.delete()
+    return redirect('site:employ_list')
