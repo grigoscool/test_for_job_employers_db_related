@@ -1,5 +1,20 @@
 {% extends 'work_site/base.html' %}
 {% load static %}
 {% block content %}
+<table class="employ-list" border="1">
+	<caption>Table of employers list</caption>
+	<tr>
+		<th>fio</th>
+		<th>job</th>
+		<th>date of employment</th>
+		<th>salary</th>
+	</tr>
+	{% for director in directors %}
+		<tr>
+			<td>{{ director.fio }}</td><td>{{ director.job }}</td>
+			<td>{{ director.employment_date }}</td><td>{{ director.salary }}</td>
+		</tr>
+	{% endfor %}
 
+</table>
 {% endblock content %}

@@ -11,8 +11,6 @@ def home(request):
     crawler = Crawler.objects.filter(pk__range=(1, 4))
     elec = Electric.objects.filter(pk__range=(1, 4))
 
-
-
     context = {
         'directors': directors,
         'asis': asis,
@@ -24,5 +22,10 @@ def home(request):
     }
     return render(request, 'work_site/index.html', context)
 
+
 def show_employ(request):
-    return render(request, 'work_site/employers.html')
+    directors = Director.objects.all()
+    context = {
+        'directors': directors,
+    }
+    return render(request, 'work_site/employers.html', context)
