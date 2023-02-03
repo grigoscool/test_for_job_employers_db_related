@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_seed',
-    'work_site',
+    # my apps
+    'work_site.apps.WorkSiteConfig',
+    'authentication.apps.AuthenticationConfig',
 ]
 
 MIDDLEWARE = [

@@ -1,6 +1,9 @@
 from django.urls import path
+
 from .views import home, show_employ, search
 
+
+app_name = 'site'
 
 urlpatterns = [
     path('', home, name='home'),
