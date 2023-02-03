@@ -1,0 +1,20 @@
+{% extends 'work_site/base.html' %}
+{% load static %}
+{% block content %}
+<table class="employ-list" border="1">
+	<caption>Table of employers list</caption>
+	<tr>
+		<th>fio</th>
+		<th>job</th>
+		<th>date of employment</th>
+		<th>salary</th>
+	</tr>
+	{% for e in employer %}
+		<tr>
+			<td>{{ e.fio }}</td><td>{{ e.job }}</td>
+			<td>{{ e.employment_date }}</td><td>{{ e.salary }}</td>
+		</tr>
+	{% endfor %}
+
+</table>
+{% endblock content %}

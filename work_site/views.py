@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Director, AssociateDir, Manager, OperatorsKTZ, OperatorsElec, Crawler, Electric
+from django.db.models import Q
 
 
 def home(request):
@@ -24,8 +25,18 @@ def home(request):
 
 
 def show_employ(request):
-    directors = Director.objects.all()
+    directors = Director.objects.all().order_by('-salary')
     context = {
         'directors': directors,
     }
     return render(request, 'work_site/employers.html', context)
+
+
+def search(request):
+    searching_data = request.GET.get('search')
+    employer = Director.objects.filter(
+        Q(fio__icontains=searching_data) | Q(job__icontains=searching_data) | Q(salary__icontains=searching_data))
+    context = {
+        'employer': employer,
+    }
+    return render(request, 'work_site/search_results.html', context)
