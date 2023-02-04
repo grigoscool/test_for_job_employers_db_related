@@ -62,6 +62,9 @@ class EditEmploy(UpdateView):
     template_name = 'work_site/edit_employ.html'
     success_url = reverse_lazy('site:employ_list')
 
+    # def get_queryset(self):
+    #     return Director.objects.all().select_related('asistent')
+
 
 def delete_employ(request, pk):
     employer = Director.objects.get(pk=pk)
