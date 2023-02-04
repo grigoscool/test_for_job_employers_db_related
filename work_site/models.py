@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class AbstractEmploy(models.Model):
@@ -6,6 +7,7 @@ class AbstractEmploy(models.Model):
     job = models.CharField(max_length=255)
     employment_date = models.DateTimeField(auto_now_add=True, blank=True)
     salary = models.IntegerField()
+    photo = models.ImageField(upload_to='photos', null=True)
 
     def __str__(self):
         return self.fio
@@ -17,8 +19,11 @@ class AbstractEmploy(models.Model):
 class Director(AbstractEmploy):
     asistent = models.ForeignKey('AssociateDir', on_delete=models.SET_NULL, null=True)
 
+
     class Meta:
         verbose_name_plural = 'DIRs'
+
+
 
 
 class AssociateDir(AbstractEmploy):

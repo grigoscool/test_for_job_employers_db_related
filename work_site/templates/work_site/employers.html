@@ -17,7 +17,9 @@
 
 			<td>{{ director.job }}<hr></td>
 			<td>{{ director.employment_date }}<hr></td><td>{{ director.salary }}<hr></td>
-
+			{% if director.photo %}
+			<td><p><img class="small-photo" src="{{ director.photo.url }}" alt="photo"></p></td>
+			{% endif %}
 		</tr>
 
 	{% endfor %}
