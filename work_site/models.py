@@ -1,3 +1,4 @@
+import random
 from django.db import models
 from django.urls import reverse
 
@@ -17,13 +18,21 @@ class AbstractEmploy(models.Model):
 
 
 class Director(AbstractEmploy):
-    asistent = models.ForeignKey('AssociateDir', on_delete=models.SET_NULL, null=True)
-
+    asistent = models.ForeignKey('AssociateDir', on_delete=models.SET_DEFAULT, null=True, default='Jos Ner Nfd')
 
     class Meta:
         verbose_name_plural = 'DIRs'
 
-
+    def delete(self, *args, **kwargs):
+        asistents = AssociateDir.objects.filter(leader_id=self.pk)
+        if asistents:
+            directors = Director.objects.all().values_list('id')
+            print(directors)
+            for asistent in asistents:
+                asistent.leader_id = random.choice(directors)[0]
+                print(asistent.leader_id)
+                asistent.save()
+        super(Director, self).delete(*args, **kwargs)
 
 
 class AssociateDir(AbstractEmploy):
