@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class AbstractEmploy(models.Model):
     fio = models.CharField(max_length=255)
     job = models.CharField(max_length=255)
@@ -14,14 +15,18 @@ class AbstractEmploy(models.Model):
 
 
 class Director(AbstractEmploy):
+    asistent = models.ForeignKey('AssociateDir', on_delete=models.SET_NULL, null=True)
+
     class Meta:
         verbose_name_plural = 'DIRs'
 
 
 class AssociateDir(AbstractEmploy):
     leader = models.ForeignKey(Director, on_delete=models.SET_NULL, null=True)
+
     class Meta:
         verbose_name_plural = 'AssociateDirs'
+
 
 class Manager(AbstractEmploy):
     leader = models.ForeignKey(AssociateDir, on_delete=models.PROTECT)
@@ -41,4 +46,3 @@ class Crawler(AbstractEmploy):
 
 class Electric(AbstractEmploy):
     leader = models.ForeignKey(OperatorsElec, on_delete=models.PROTECT)
-
