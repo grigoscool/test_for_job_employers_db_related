@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_seed', # для заполнения БД
     'debug_toolbar',
+    'rest_framework',
     # my apps
     'work_site.apps.WorkSiteConfig',
     'authentication.apps.AuthenticationConfig',

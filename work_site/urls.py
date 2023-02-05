@@ -1,7 +1,6 @@
 from django.urls import path
 
-from .views import home, show_employ, search, AddEmployer, EditEmploy, delete_employ
-
+from .views import home, show_employ, search, AddEmployer, EditEmploy, delete_employ, ListDirectors
 
 app_name = 'site'
 
@@ -12,5 +11,5 @@ urlpatterns = [
     path('add_employer/', AddEmployer.as_view(), name='add_employ'),
     path('edit_employer/<int:pk>/', EditEmploy.as_view(), name='edit_employ'),
     path('delete_employer/<int:pk>/', delete_employ, name='delete_employ'),
+    path('api/v1/', ListDirectors.as_view()),
 ]
-

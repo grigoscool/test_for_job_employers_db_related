@@ -3,9 +3,12 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView
 from django.db.models import Q
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from .models import Director, AssociateDir, Manager, OperatorsKTZ, OperatorsElec, Crawler, Electric
 from .forms import EmployForm
+from .serializers import DirectorSerialize
 
 
 def home(request):
@@ -70,3 +73,10 @@ def delete_employ(request, pk):
     employer = Director.objects.get(pk=pk)
     employer.delete()
     return redirect('site:employ_list')
+
+
+class ListDirectors(APIView):
+    def get(self, request):
+        queryset = Director.objects.all()
+        serialized_queryset = DirectorSerialize(instance=queryset, many=True)
+        return Response(serialized_queryset.data)
