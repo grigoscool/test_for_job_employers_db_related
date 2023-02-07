@@ -1,5 +1,7 @@
 {% extends 'work_site/base.html' %}
 {% load static %}
 {% block content %}
-  <p>{{ users }}</p>
+{% for post in posts %}
+  <p>{{ post }}</p><br>
+{% endfor %}
 {% endblock content %}

@@ -3,8 +3,8 @@ import requests
 import json
 
 def show_users(request):
-    response = requests.get('https://jsonplaceholder.typicode.com/users').json()
+    response = requests.get('https://jsonplaceholder.typicode.com/posts').json()
     context = {
-        'users': response,
+        'posts': response,
     }
     return render(request, 'api/api_users.html', context)
