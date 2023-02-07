@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # my apps
     'work_site.apps.WorkSiteConfig',
     'authentication.apps.AuthenticationConfig',
+    'api.apps.ApiConfig',
 ]
 
 MIDDLEWARE = [
