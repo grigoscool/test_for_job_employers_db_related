@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_seed', # для заполнения БД
     'debug_toolbar',
     'rest_framework',
+    'drf_yasg',
     # my apps
     'work_site.apps.WorkSiteConfig',
     'authentication.apps.AuthenticationConfig',

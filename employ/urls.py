@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from employ import settings
+from .yasg import urlpatterns as yasg_pat
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +27,8 @@ urlpatterns = [
     path('api/v1/', include('api.urls', namespace='api')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += yasg_pat
 
 if settings.DEBUG:
     urlpatterns += [path('__debug__/', include('debug_toolbar.urls'))]

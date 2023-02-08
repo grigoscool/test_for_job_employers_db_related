@@ -10,3 +10,4 @@ urlpatterns = [
     path('send_fio/', views.send_my_fio, name='send_api_fio'),
 
 ]
+

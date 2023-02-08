@@ -1,8 +1,7 @@
-from django.shortcuts import render, redirect
-import requests
 import json
 
-from psycopg2 import IntegrityError
+import requests
+from django.shortcuts import render
 
 from .models import Post
 from .serializers import PostSerializer
