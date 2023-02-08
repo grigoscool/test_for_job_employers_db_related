@@ -10,6 +10,7 @@ url = 'https://jsonplaceholder.typicode.com/posts'
 
 
 def show_posts(request):
+    """ Send get request and write in db all new data """
     response = requests.get(url)
     if response.status_code == 200:
         posts = response.json()
@@ -28,6 +29,7 @@ def show_posts(request):
 
 
 def send_posts(request):
+    """ Send post request and write received post in db if it is new """
     post = Post.objects.values('id', 'body').get(pk=1)
     serialize = PostSerializer(post)
     send = requests.post(url, data=serialize.data)
@@ -48,6 +50,7 @@ def send_posts(request):
 
 
 def send_my_fio(request):
+    """ Send post request with my fio and the list of results from my tests """
     posts = Post.objects.values('title').all()
     my_list = []
     for post in posts:

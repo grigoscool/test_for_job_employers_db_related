@@ -12,6 +12,7 @@ from .serializers import DirectorSerialize
 
 
 def home(request):
+    """Show home page, list employers in a tree structure """
     directors = Director.objects.filter(pk__range=(1, 2))
     asis = AssociateDir.objects.filter(pk__range=(1, 4))
     manager = Manager.objects.filter(pk__range=(1, 4))
@@ -34,6 +35,7 @@ def home(request):
 
 @login_required
 def show_employ(request):
+    """Show table of all Directors"""
     directors = Director.objects.all().order_by('-salary')
     context = {
         'directors': directors,
@@ -43,6 +45,7 @@ def show_employ(request):
 
 @login_required
 def search(request):
+    """Searching from all fields"""
     searching_data = request.GET.get('search')
     employer = Director.objects.filter(
         Q(fio__icontains=searching_data) | Q(job__icontains=searching_data) | Q(salary__icontains=searching_data))
@@ -53,6 +56,7 @@ def search(request):
 
 
 class AddEmployer(CreateView):
+    """Create new employer"""
     form_class = EmployForm
     template_name = 'work_site/add_employ.html'
     context_object_name = 'form'
@@ -60,6 +64,7 @@ class AddEmployer(CreateView):
 
 
 class EditEmploy(UpdateView):
+    """Change some data in Director table"""
     model = Director
     fields = '__all__'
     template_name = 'work_site/edit_employ.html'
@@ -76,6 +81,7 @@ def delete_employ(request, pk):
 
 
 class ListDirectors(APIView):
+    """API to get all list of Directors"""
     def get(self, request):
         queryset = Director.objects.all()
         serialized_queryset = DirectorSerialize(instance=queryset, many=True)
