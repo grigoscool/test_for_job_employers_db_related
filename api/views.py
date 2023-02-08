@@ -32,7 +32,7 @@ def send_posts(request):
     post = Post.objects.values('id', 'body').get(pk=1)
     serialize = PostSerializer(post)
     send = requests.post(url, data=serialize.data)
-    if send.status_code == 200:
+    if send.status_code == 201:
         response = send.json()
 
         if not Post.objects.filter(pk=response['id']):
