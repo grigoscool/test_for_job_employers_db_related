@@ -49,10 +49,8 @@ class Director(AbstractEmploy):
         asistents = AssociateDir.objects.filter(leader_id=self.pk)
         if asistents:
             directors = Director.objects.all().values_list('id')
-            print(directors)
             for asistent in asistents:
                 asistent.leader_id = random.choice(directors)[0]
-                print(asistent.leader_id)
                 asistent.save()
         super(Director, self).delete(*args, **kwargs)
 
