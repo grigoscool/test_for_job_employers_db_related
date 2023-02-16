@@ -2,6 +2,7 @@ import json
 
 import requests
 from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
 
 from .models import Post
 from .serializers import PostSerializer
@@ -73,3 +74,9 @@ def send_my_fio(request):
         return render(request, 'api/send_api_fio.html', context)
     else:
         return render(request, 'api/send_api_fio.html')
+
+
+class PostViewApiLIst(ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    

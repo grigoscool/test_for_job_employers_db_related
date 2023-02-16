@@ -2,12 +2,15 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView
-from django.db.models import Q
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Director, AssociateDir, Manager, OperatorsKTZ, OperatorsElec, Crawler, Electric
 from .forms import EmployForm
+from .models import (
+    Director, AssociateDir, Manager,
+    OperatorsKTZ, OperatorsElec, Crawler, Electric
+)
 from .serializers import DirectorSerialize
 
 
@@ -45,10 +48,9 @@ def show_employ(request):
 
 @login_required
 def search(request):
-    """Searching from all fields"""
+    """ Searching from all fields of Director """
     searching_data = request.GET.get('search')
-    employer = Director.objects.filter(
-        Q(fio__icontains=searching_data) | Q(job__icontains=searching_data) | Q(salary__icontains=searching_data))
+    employer = Director.objects.search(searching_data)
     context = {
         'employer': employer,
     }
@@ -82,7 +84,12 @@ def delete_employ(request, pk):
 
 class ListDirectors(APIView):
     """API to get all list of Directors"""
+    filter_beckends = [DjangoFilterBackend]
+    filterser_fields = ['salary']
+
     def get(self, request):
         queryset = Director.objects.all()
-        serialized_queryset = DirectorSerialize(instance=queryset, many=True)
+        serialized_queryset = DirectorSerialize(
+            instance=queryset, many=True
+        )
         return Response(serialized_queryset.data)
