@@ -1,6 +1,7 @@
 import random
 from django.db import models
 from django.db.models import Q
+from stdimage import StdImageField
 
 
 class DirectorManager(models.Manager):
@@ -12,7 +13,6 @@ class DirectorManager(models.Manager):
                 Q(job__icontains=searching_data) |
                 Q(salary__icontains=searching_data)
         )
-
         return self.get_queryset().filter(lookups)
 
 
@@ -23,9 +23,11 @@ class AbstractEmploy(models.Model):
         auto_now_add=True, blank=True
     )
     salary = models.IntegerField()
-    photo = models.ImageField(
-        upload_to='photos', null=True, blank=True
+    photo = StdImageField(
+        upload_to='photos', null=True, blank=True,
+        variations={'thumbnail': {'width': 100, 'height': 75}}
     )
+
 
     def __str__(self):
         return self.fio

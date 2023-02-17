@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'rest_framework',
     'drf_yasg',
+    'stdimage',
     # my apps
     'work_site.apps.WorkSiteConfig',
     'authentication.apps.AuthenticationConfig',
