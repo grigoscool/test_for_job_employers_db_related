@@ -3,6 +3,8 @@ from django.db import models
 from django.db.models import Q
 from stdimage import StdImageField
 
+from .validators import is_valid_fio
+
 
 class DirectorManager(models.Manager):
     def search(self, searching_data=None):
@@ -17,7 +19,7 @@ class DirectorManager(models.Manager):
 
 
 class AbstractEmploy(models.Model):
-    fio = models.CharField(max_length=255)
+    fio = models.CharField(max_length=255, validators=[is_valid_fio])
     job = models.CharField(max_length=255)
     employment_date = models.DateTimeField(
         auto_now_add=True, blank=True
